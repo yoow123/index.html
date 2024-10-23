@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animasi Hewan</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background-color: #f0f8ff;
+        }
+        .hewan {
+            position: absolute;
+            width: 100px; 
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        const hewanList = [
+            'https://www.google.com/url?sa=i&url=https%3A%2F%2Fid.pngtree.com%2Ffreepng%2Fcockroach-antenna-cockroach-animal-photo_13565088.html&psig=AOvVaw3YX33TMXKC8bQRVI12EL6O&ust=1729777836378000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCICl_9zSpIkDFQAAAAAdAAAAABAE
+            'https://www.google.com/url?sa=i&url=https%3A%2F%2Fid.pngtree.com%2Ffreepng%2Fcockroach-antenna-cockroach-animal-photo_13565088.html&psig=AOvVaw3YX33TMXKC8bQRVI12EL6O&ust=1729777836378000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCICl_9zSpIkDFQAAAAAdAAAAABAE
+        ];
+
+        function getRandomPosition() {
+            const x = Math.random() * window.innerWidth;
+            const y = Math.random() * window.innerHeight;
+            return { x, y };
+        }
+
+        function createHewan() {
+            const hewanImg = document.createElement('img');
+            hewanImg.src = hewanList[Math.floor(Math.random() * hewanList.length)];
+            hewanImg.className = 'hewan';
+            document.body.appendChild(hewanImg);
+
+            const { x, y } = getRandomPosition();
+            hewanImg.style.left = `${x}px`;
+            hewanImg.style.top = `${y}px`;
+
+            setTimeout(() => {
+                hewanImg.remove();
+            }, 3000);
+        }
+
+        setInterval(createHewan, 1000);
+    </script>
+</body>
+</html>
